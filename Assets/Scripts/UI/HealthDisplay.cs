@@ -20,4 +20,6 @@ public class HealthDisplay : MonoBehaviour
         hpBar.fillAmount = target.GetCurrentHP() / target.GetMaxHP();
         hpText.text = target.GetCurrentHP() + "/" + target.GetMaxHP();
     }
+
+    
 }

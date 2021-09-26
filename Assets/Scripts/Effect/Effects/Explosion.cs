@@ -6,6 +6,7 @@ public class Explosion : Effect
 {
     [SerializeField] float damage = 30f;
     [SerializeField] float effectRadius = 2f;
+    [SerializeField] ParticleSystem explosionVFX = null;
 
     public override void Activate(GameObject target, GameObject bomb)
     {
@@ -23,6 +24,7 @@ public class Explosion : Effect
             }
         }
 
+        Instantiate(explosionVFX, bomb.transform.position, Quaternion.identity);
         Destroy(bomb);
     }
 }

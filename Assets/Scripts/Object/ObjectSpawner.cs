@@ -13,10 +13,12 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] ParticleSystem spawnVFX = null;
  
     DispenserController dispenserController;
+    PlayData playData;
 
     private void Awake() 
     {
         dispenserController = FindObjectOfType<DispenserController>();    
+        playData = FindObjectOfType<PlayData>();
     }
 
     public void SpawnEnemy()
@@ -27,7 +29,11 @@ public class ObjectSpawner : MonoBehaviour
     
     public void SpawnPotion()
     {
-        Spawn(potion);
+        if(playData.CanUse(2))
+        {
+            playData.UseCoin(2);
+            Spawn(potion);
+        }
     }
 
     public void SpawnBomb()

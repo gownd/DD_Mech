@@ -6,14 +6,16 @@ public class DispenserController : MonoBehaviour
 {
     [SerializeField] Camera mainCamera = null;
     [SerializeField] float startYPos = 1f;
-    [SerializeField] float endYPos = 6f;
+    [SerializeField] float endYPos = 5f;
     [SerializeField] float posValue = 0f;
     [SerializeField] Transform gear = null;
     [SerializeField] float maxRotation = -360f;
+    // [SerializeField] float moveSpeed = 10f;
 
     Rigidbody2D rb;
 
     bool isMoving = false;
+    // float timePassed;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -52,4 +54,12 @@ public class DispenserController : MonoBehaviour
     {
         return posValue;
     }
+
+    // void MoveAuto()
+    // {
+    //     timePassed += Time.deltaTime;
+    //     transform.position = new Vector2(transform.position.x, ((Mathf.Sin(timePassed * moveSpeed) + 1f)/2f * (endYPos - startYPos)) + 1);
+    //     posValue = ( transform.position.y - startYPos ) / (endYPos - startYPos);  
+    //     gear.eulerAngles = new Vector3(0f, 0f, posValue * maxRotation);
+    // }
 }

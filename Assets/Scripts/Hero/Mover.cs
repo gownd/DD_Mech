@@ -15,6 +15,8 @@ public class Mover : MonoBehaviour
 
     private void FixedUpdate() 
     {
+        if(!GetComponent<Health>().IsAlive()) return;
+
         rb.velocity = new Vector2(moveSpeed * Time.deltaTime, rb.velocity.y);
     }
 }

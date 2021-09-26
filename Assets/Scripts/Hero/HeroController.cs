@@ -26,10 +26,27 @@ public class HeroController : MonoBehaviour
 
     void HandleFight(GameObject enemy)
     {
+        if(!enemy.GetComponent<Health>().IsAlive()) return;
+
+        Attack(enemy);
+        Hurt(enemy);
+
+
+        
+
+        
+    }
+
+    void Attack(GameObject enemy)
+    {
+        GetComponent<Animator>().SetTrigger("Attack");
+
         enemy.GetComponent<Health>().TakeDamage(5f);
         enemy.GetComponent<Rigidbody2D>().AddForce(new Vector2(300f, 200f));
-        GetComponent<Health>().TakeDamage(5f);
+    }
 
-        GetComponent<Animator>().SetTrigger("Attack");
+    void Hurt(GameObject enemy)
+    {
+        GetComponent<Health>().TakeDamage(enemy.GetComponent<Enemy>().info.damage);
     }
 }
