@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MoreMountains.NiceVibrations;
 
 public class ObjectSpawner : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class ObjectSpawner : MonoBehaviour
 
     void Spawn(GameObject objToSpawn)
     {
+        FindObjectOfType<HapticPlayer>().PlayHaptic(HapticTypes.MediumImpact);
         GameObject newObj = Instantiate(objToSpawn, spawnPos.position, Quaternion.identity);
         newObj.GetComponent<Rigidbody2D>().AddForce(throwForce + AddForce * dispenserController.GetPosValue());
         spawnVFX.Play();

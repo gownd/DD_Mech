@@ -1,21 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MoreMountains.NiceVibrations;
 
 public class DispenserController : MonoBehaviour
 {
+    [Header("Reference")]
     [SerializeField] Camera mainCamera = null;
+
+    [Header("Config")]
     [SerializeField] float startYPos = 1f;
     [SerializeField] float endYPos = 5f;
-    [SerializeField] float posValue = 0f;
+    [SerializeField] float moveSpeed = 10f;
+    
+    [Header("Gear")]
     [SerializeField] Transform gear = null;
     [SerializeField] float maxRotation = -360f;
-    // [SerializeField] float moveSpeed = 10f;
 
-    Rigidbody2D rb;
+    float posValue = 0f;
 
     bool isMoving = false;
-    // float timePassed;
+    bool isUpPressed = false;
+    bool isDownPressed = false;
+
+    Rigidbody2D rb;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -23,7 +31,27 @@ public class DispenserController : MonoBehaviour
 
     private void Update() 
     {  
+        MoveByGear();
         Move();
+    }
+
+    void Move()
+    {
+        if(isUpPressed && posValue < 1f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, moveSpeed * Time.deltaTime);
+        }
+        else if(isDownPressed && posValue > 0f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, -moveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
+        }
+
+        posValue = ( transform.position.y - startYPos ) / (endYPos - startYPos);  
+        gear.eulerAngles = new Vector3(0f, 0f, posValue * maxRotation);
     }
 
     private void OnMouseDown() 
@@ -36,7 +64,7 @@ public class DispenserController : MonoBehaviour
         isMoving = false;  
     }
 
-    void Move()
+    void MoveByGear()
     {
         if(!isMoving) return;
 
@@ -46,7 +74,6 @@ public class DispenserController : MonoBehaviour
         this.transform.position = new Vector3(transform.position.x, yPosToMove, transform.position.z);
 
         posValue = ( transform.position.y - startYPos ) / (endYPos - startYPos);  
-
         gear.eulerAngles = new Vector3(0f, 0f, posValue * maxRotation);
     }
 
@@ -55,11 +82,23 @@ public class DispenserController : MonoBehaviour
         return posValue;
     }
 
-    // void MoveAuto()
-    // {
-    //     timePassed += Time.deltaTime;
-    //     transform.position = new Vector2(transform.position.x, ((Mathf.Sin(timePassed * moveSpeed) + 1f)/2f * (endYPos - startYPos)) + 1);
-    //     posValue = ( transform.position.y - startYPos ) / (endYPos - startYPos);  
-    //     gear.eulerAngles = new Vector3(0f, 0f, posValue * maxRotation);
-    // }
+    public void PressUpButton()
+    {
+        if(isUpPressed == false) FindObjectOfType<HapticPlayer>().PlayHaptic(HapticTypes.Selection);
+        isUpPressed = true;
+        isDownPressed = false;
+    }
+
+    public void PressDownButton()
+    {
+        if(isDownPressed == false) FindObjectOfType<HapticPlayer>().PlayHaptic(HapticTypes.Selection);
+        isUpPressed = false;
+        isDownPressed = true;
+    }
+
+    public void UnpressButtons()
+    {
+        isUpPressed = false;
+        isDownPressed = false;
+    }
 }
