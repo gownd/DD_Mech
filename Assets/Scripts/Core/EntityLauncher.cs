@@ -6,6 +6,7 @@ using DD.UI;
 using DD.Entities;
 using DD.Data;
 using DD.FX;
+using DD.Inventory;
 
 namespace DD.Core
 {
@@ -26,11 +27,13 @@ namespace DD.Core
 
         LauncherController launcherController;
         PlayData playData;
+        InventoryHandler inventoryHandler;
 
         private void Awake()
         {
             launcherController = FindObjectOfType<LauncherController>();
             playData = FindObjectOfType<PlayData>();
+            inventoryHandler = FindObjectOfType<InventoryHandler>();
         }
 
         public void LaunchEnemy()
@@ -44,15 +47,20 @@ namespace DD.Core
             LaunchEntity(potion);
         }
 
+        public void LaunchInventoryItem(int i)
+        {
+            Entity entityToLaunch = inventoryHandler.GetInventory()[i];
+            inventoryHandler.DeleteItem(i);
+
+            LaunchEntity(entityToLaunch);
+        }
+
         public void LaunchEntity(Entity entityToLaunch)
         {
-            print("A");
-
             if(playData.CanUse(entityToLaunch.info.cost))
             {
                 playData.UseCoin(entityToLaunch.info.cost);
                 Launch(entityToLaunch.gameObject);
-                print("B");
             }
         }
 

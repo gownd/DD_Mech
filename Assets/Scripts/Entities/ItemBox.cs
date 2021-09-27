@@ -24,6 +24,11 @@ namespace DD.Entities
         {
             return itemsToGet[Random.Range(0, itemsToGet.Length)];
         }
+
+        public void SetSpeed(float speedToSet)
+        {
+            moveSpeed = speedToSet;
+        }
     }
 
 }

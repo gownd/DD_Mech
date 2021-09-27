@@ -107,7 +107,6 @@ namespace DD.UI
 
         public void PressUpButton()
         {
-            print("UP");
             if (isUpPressed == false) FindObjectOfType<HapticPlayer>().PlayHaptic(HapticTypes.Selection);
             isUpPressed = true;
             isDownPressed = false;
@@ -115,7 +114,6 @@ namespace DD.UI
 
         public void PressDownButton()
         {
-            print("DOWN");
             if (isDownPressed == false) FindObjectOfType<HapticPlayer>().PlayHaptic(HapticTypes.Selection);
             isUpPressed = false;
             isDownPressed = true;
@@ -123,7 +121,6 @@ namespace DD.UI
 
         public void UnpressButtons()
         {
-            print("UN");
             isUpPressed = false;
             isDownPressed = false;
         }

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   objName: "\uD3ED\uD0C4"
-  repSprite: {fileID: 0}
+  repSprite: {fileID: 21300000, guid: ebf62fa7cdf01934da24075ebbc0d307, type: 3}
   cost: 0
