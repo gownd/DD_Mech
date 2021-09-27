@@ -3,105 +3,110 @@ using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Feedbacks;
 using System;
+using DD.FX;
 
-public class Health : MonoBehaviour
+namespace DD.Combat
 {
-    [Header("Configs")]
-    [SerializeField] float maxHP = 100f;
-
-    [Header("Feedbacks")]
-    [SerializeField] MMFeedbacks hitFeedback = null;
-    [SerializeField] MMFeedbacks healFeedback = null;
-
-    [Header("Damage Text")]
-    [SerializeField] DamageText damageTextPrefab = null;
-    [SerializeField] Transform floatPos = null;
-
-    public event Action onTakeDamage;
-    public event Action onDie;
-
-    bool isAlive = true;
-
-    float hp;
-
-    private void Awake() 
+    public class Health : MonoBehaviour
     {
-        onTakeDamage += DoNothing;
-        onDie += DoNothing;
-    }
+        [Header("Configs")]
+        [SerializeField] float maxHP = 100f;
 
-    private void Start() 
-    {
-        hp = maxHP;
-    }
+        [Header("Feedbacks")]
+        [SerializeField] MMFeedbacks hitFeedback = null;
+        [SerializeField] MMFeedbacks healFeedback = null;
 
-    public void TakeDamage(float damage)
-    {
-        if(!isAlive) return;
+        [Header("Damage Text")]
+        [SerializeField] DamageText damageTextPrefab = null;
+        [SerializeField] Transform floatPos = null;
 
-        hitFeedback.PlayFeedbacks();
-        hp = Mathf.Max(hp - damage, 0f);
+        public event Action onTakeDamage;
+        public event Action onDie;
 
-        ShowDamageText(damage);
-        onTakeDamage(); // Action
+        bool isAlive = true;
 
-        if (hp <= 0)
+        float hp;
+
+        private void Awake()
         {
-            Die();
+            onTakeDamage += DoNothing;
+            onDie += DoNothing;
         }
-    }
 
-    void ShowDamageText(float damage)
-    {
-        DamageText damageText = Instantiate(damageTextPrefab, floatPos);
-        damageText.SetText(damage);
-    }
-
-    void Die()
-    {
-        isAlive = false;
-
-        onDie(); // Action
-
-        foreach (Transform child in transform)
+        private void Start()
         {
-            if (child.GetComponent<SpriteRenderer>())
+            hp = maxHP;
+        }
+
+        public void TakeDamage(float damage)
+        {
+            if (!isAlive) return;
+
+            hitFeedback.PlayFeedbacks();
+            hp = Mathf.Max(hp - damage, 0f);
+
+            ShowDamageText(damage);
+            onTakeDamage(); // Action
+
+            if (hp <= 0)
             {
-                child.gameObject.SetActive(false);
+                Die();
             }
         }
-        
-        Destroy(gameObject, 1f);
-    }
 
-    public void Heal(float healAmount)
-    {
-        if(!isAlive) return;
-
-        if(healFeedback != null)
+        void ShowDamageText(float damage)
         {
-            healFeedback.PlayFeedbacks();
+            DamageText damageText = Instantiate(damageTextPrefab, floatPos);
+            damageText.SetText(damage);
         }
-        hp = Mathf.Min(hp + healAmount, maxHP);
+
+        void Die()
+        {
+            isAlive = false;
+
+            onDie(); // Action
+
+            foreach (Transform child in transform)
+            {
+                if (child.GetComponent<SpriteRenderer>())
+                {
+                    child.gameObject.SetActive(false);
+                }
+            }
+
+            Destroy(gameObject, 1f);
+        }
+
+        public void Heal(float healAmount)
+        {
+            if (!isAlive) return;
+
+            if (healFeedback != null)
+            {
+                healFeedback.PlayFeedbacks();
+            }
+            hp = Mathf.Min(hp + healAmount, maxHP);
+        }
+
+        public float GetCurrentHP()
+        {
+            return hp;
+        }
+
+        public float GetMaxHP()
+        {
+            return maxHP;
+        }
+
+        public bool IsAlive()
+        {
+            return isAlive;
+        }
+
+        void DoNothing()
+        {
+            // Bug 방지
+        }
     }
 
-    public float GetCurrentHP()
-    {
-        return hp;
-    }
-
-    public float GetMaxHP()
-    {
-        return maxHP;
-    }
-
-    public bool IsAlive()
-    {
-        return isAlive;
-    }
-
-    void DoNothing()
-    {
-        // Bug 방지
-    }
 }

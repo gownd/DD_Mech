@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DD.Combat;
 
-namespace DD.Hero
+namespace DD.Entities
 {
-    public class Mover : MonoBehaviour
+    public class ItemBox : MonoBehaviour
     {
-        [SerializeField] float moveSpeed = 10f;
-
+        [SerializeField] float moveSpeed = 50f;
+        [SerializeField] GameObject[] itemsToGet = null;
         Rigidbody2D rb;
 
         private void Awake()
@@ -18,9 +17,12 @@ namespace DD.Hero
 
         private void FixedUpdate()
         {
-            if (!GetComponent<Health>().IsAlive()) return;
-
             rb.velocity = new Vector2(moveSpeed * Time.deltaTime, rb.velocity.y);
+        }
+
+        public GameObject GetRandomItem()
+        {
+            return itemsToGet[Random.Range(0, itemsToGet.Length)];
         }
     }
 

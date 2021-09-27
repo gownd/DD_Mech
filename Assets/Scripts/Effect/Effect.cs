@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public abstract class Effect : ScriptableObject 
+namespace DD.Effects
 {
-    public abstract void Activate(GameObject target, GameObject self);
+    public abstract class Effect : ScriptableObject
+    {
+        public abstract void Activate(GameObject target, GameObject self);
+    }
 }

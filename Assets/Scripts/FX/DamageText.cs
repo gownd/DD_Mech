@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class DamageText : MonoBehaviour
+namespace DD.FX
 {
-    private void Start()
+    public class DamageText : MonoBehaviour
     {
-        Destroy(gameObject, 1f);
+        private void Start()
+        {
+            Destroy(gameObject, 1f);
+        }
+
+        public void SetText(float damage)
+        {
+            GetComponent<TextMeshPro>().text = damage.ToString();
+        }
     }
 
-    public void SetText(float damage)
-    {
-        GetComponent<TextMeshPro>().text = damage.ToString();
-    }
 }

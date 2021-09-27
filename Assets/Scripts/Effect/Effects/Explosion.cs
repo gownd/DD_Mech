@@ -1,30 +1,34 @@
 using UnityEngine;
 using System.Collections;
+using DD.Combat;
 
-[CreateAssetMenu(fileName = "Explosion", menuName = "DD_Mech/Effect/Explosion", order = 0)]
-public class Explosion : Effect
+namespace DD.Effects
 {
-    [SerializeField] float damage = 30f;
-    [SerializeField] float effectRadius = 2f;
-    [SerializeField] ParticleSystem explosionVFX = null;
-
-    public override void Activate(GameObject target, GameObject bomb)
+    [CreateAssetMenu(fileName = "Explosion", menuName = "DD_Mech/Effect/Explosion", order = 0)]
+    public class Explosion : Effect
     {
-        Health[] healths = FindObjectsOfType<Health>();
+        [SerializeField] float damage = 30f;
+        [SerializeField] float effectRadius = 2f;
+        [SerializeField] ParticleSystem explosionVFX = null;
 
-        if (healths != null)
+        public override void Activate(GameObject target, GameObject bomb)
         {
-            for (int i = 0; i < healths.Length; i++)
+            Health[] healths = FindObjectsOfType<Health>();
+
+            if (healths != null)
             {
-                float distance = Vector2.Distance(bomb.transform.position, healths[i].transform.position);
-                if (distance <= effectRadius)
+                for (int i = 0; i < healths.Length; i++)
                 {
-                    healths[i].TakeDamage(damage);
+                    float distance = Vector2.Distance(bomb.transform.position, healths[i].transform.position);
+                    if (distance <= effectRadius)
+                    {
+                        healths[i].TakeDamage(damage);
+                    }
                 }
             }
-        }
 
-        Instantiate(explosionVFX, bomb.transform.position, Quaternion.identity);
-        Destroy(bomb);
+            Instantiate(explosionVFX, bomb.transform.position, Quaternion.identity);
+            Destroy(bomb);
+        }
     }
 }

@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI.ProceduralImage;
 using TMPro;
+using DD.Combat;
 
-public class HealthDisplay : MonoBehaviour
+namespace DD.UI
 {
-    [SerializeField] Health target = null;
-    [SerializeField] ProceduralImage hpBar = null;
-    [SerializeField] TextMeshProUGUI hpText = null;
-
-    private void Update() 
+    public class HealthDisplay : MonoBehaviour
     {
-        UpdateDisplay();    
-    }
+        [SerializeField] Health target = null;
+        [SerializeField] ProceduralImage hpBar = null;
+        [SerializeField] TextMeshProUGUI hpText = null;
 
-    void UpdateDisplay()
-    {
-        hpBar.fillAmount = target.GetCurrentHP() / target.GetMaxHP();
-        hpText.text = target.GetCurrentHP() + "/" + target.GetMaxHP();
-    }
+        private void Update()
+        {
+            UpdateDisplay();
+        }
 
-    
+        void UpdateDisplay()
+        {
+            hpBar.fillAmount = target.GetCurrentHP() / target.GetMaxHP();
+            hpText.text = target.GetCurrentHP() + "/" + target.GetMaxHP();
+        }
+    }
 }

@@ -2,25 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DD.Data;
 
-public class CoinDisplay : MonoBehaviour
+namespace DD.UI
 {
-    [SerializeField] TextMeshProUGUI coinText = null;
-
-    PlayData playData;
-
-    private void Awake() 
+    public class CoinDisplay : MonoBehaviour
     {
-        playData = FindObjectOfType<PlayData>();    
+        [SerializeField] TextMeshProUGUI coinText = null;
+
+        PlayData playData;
+
+        private void Awake()
+        {
+            playData = FindObjectOfType<PlayData>();
+        }
+
+        void Update()
+        {
+            UpdateDisplay();
+        }
+
+        void UpdateDisplay()
+        {
+            coinText.text = playData.GetCurrentCoin().ToString();
+        }
     }
 
-    void Update()
-    {
-        UpdateDisplay();
-    }
-
-    void UpdateDisplay()
-    {
-        coinText.text = playData.GetCurrentCoin().ToString();
-    }
 }

@@ -1,24 +1,28 @@
 using UnityEngine;
 using System.Collections;
+using DD.Combat;
 
-[CreateAssetMenu(fileName = "Heal", menuName = "DD_Mech/Effect/Heal", order = 0)]
-public class Heal : Effect
+namespace DD.Effects
 {
-    [SerializeField] float distance = 10f;
-    [SerializeField] float healAmount = 30f;
-
-    public override void Activate(GameObject target, GameObject potion)
+    [CreateAssetMenu(fileName = "Heal", menuName = "DD_Mech/Effect/Heal", order = 0)]
+    public class Heal : Effect
     {
-        GameObject hero = GameObject.FindWithTag("Hero");
-        if (hero != null)
-        {         
-            if (Vector2.Distance(potion.transform.position, hero.transform.position) <= distance)
-            {
-                Health heroHP = hero.GetComponent<Health>();
-                heroHP.Heal(healAmount);
-            }
-        }
+        [SerializeField] float distance = 10f;
+        [SerializeField] float healAmount = 30f;
 
-        Destroy(potion);
+        public override void Activate(GameObject target, GameObject potion)
+        {
+            GameObject hero = GameObject.FindWithTag("Hero");
+            if (hero != null)
+            {
+                if (Vector2.Distance(potion.transform.position, hero.transform.position) <= distance)
+                {
+                    Health heroHP = hero.GetComponent<Health>();
+                    heroHP.Heal(healAmount);
+                }
+            }
+
+            Destroy(potion);
+        }
     }
 }
