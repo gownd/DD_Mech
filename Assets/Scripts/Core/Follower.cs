@@ -9,7 +9,7 @@ public class Follower : MonoBehaviour
 
     private void Start() 
     {
-        offset = new Vector2(-target.transform.position.x, -target.transform.position.y);    
+        offset = new Vector2(-target.transform.position.x + transform.position.x, -target.transform.position.y + transform.position.y);    
     }
 
     private void Update() 

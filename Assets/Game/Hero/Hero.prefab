@@ -480,9 +480,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1545909203
+  m_SortingLayerID: -1786135165
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1071302430762533504, guid: c59846aebdab6204f87a6acca26989b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -655,7 +655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4466d67df386dc459a8d1f074f8c070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
+  maxHP: 50
   hitFeedback: {fileID: 1953776705}
   healFeedback: {fileID: 1405904880}
   damageTextPrefab: {fileID: 6117349911216068515, guid: d25926cc84fb46e488655d5a8fde740b, type: 3}

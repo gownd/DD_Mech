@@ -17,8 +17,8 @@ TagManager:
   - Hero
   - Spawner
   - Platform
-  - Conveyor
-  - 
+  - Item
+  - Catchable
   - 
   - 
   - 
@@ -43,8 +43,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Catchable
+    uniqueID: 3821780809
+    locked: 0
   - name: Enemy
     uniqueID: 1545909203
+    locked: 0
+  - name: Hero
+    uniqueID: 2508832131
     locked: 0
   - name: Item
     uniqueID: 3400944909
