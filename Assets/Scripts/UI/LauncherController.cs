@@ -121,6 +121,7 @@ namespace DD.UI
 
         public void UnpressButtons()
         {
+            FindObjectOfType<HapticPlayer>().PlayHaptic(HapticTypes.LightImpact);
             isUpPressed = false;
             isDownPressed = false;
         }

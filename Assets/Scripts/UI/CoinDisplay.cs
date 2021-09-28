@@ -27,5 +27,4 @@ namespace DD.UI
             coinText.text = playData.GetCurrentCoin().ToString();
         }
     }
-
 }

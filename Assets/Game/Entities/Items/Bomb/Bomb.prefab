@@ -28,6 +28,10 @@ PrefabInstance:
       value: -0.056186914
       objectReference: {fileID: 0}
     - target: {fileID: 5877409410669988342, guid: ad669db2baaa42240b2aaa8d72317011, type: 3}
+      propertyPath: cost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5877409410669988342, guid: ad669db2baaa42240b2aaa8d72317011, type: 3}
       propertyPath: info
       value: 
       objectReference: {fileID: 11400000, guid: 1bdaf3e3d6b1b7d4199f3b0b128880ed, type: 2}

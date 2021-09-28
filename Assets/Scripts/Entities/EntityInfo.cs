@@ -8,6 +8,5 @@ namespace DD.Entities
         public EntityType type;
         public string objName;
         public Sprite repSprite;
-        public int cost;
     }
 }

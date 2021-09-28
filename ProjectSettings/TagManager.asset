@@ -7,6 +7,7 @@ TagManager:
   - Hero
   - Enemy
   - ItemBox
+  - TreasureBox
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Item
   - Catchable
   - Catcher
-  - 
+  - Treasure
   - 
   - 
   - 

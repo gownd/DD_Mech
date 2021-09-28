@@ -7,6 +7,7 @@ using DD.Entities;
 using DD.Data;
 using DD.FX;
 using DD.Inventory;
+using DD.Shop;
 
 namespace DD.Core
 {
@@ -28,23 +29,26 @@ namespace DD.Core
         LauncherController launcherController;
         PlayData playData;
         InventoryHandler inventoryHandler;
+        ShopHandler shopHandler;
+        
 
         private void Awake()
         {
             launcherController = FindObjectOfType<LauncherController>();
             playData = FindObjectOfType<PlayData>();
             inventoryHandler = FindObjectOfType<InventoryHandler>();
+            shopHandler = FindObjectOfType<ShopHandler>();
         }
 
         public void LaunchEnemy()
         {
-            LaunchEntity(skeleton);
+            LaunchEntity(skeleton, 0);
         }
 
 
         public void LaunchPotion()
         {
-            LaunchEntity(potion);
+            LaunchEntity(potion, 2);
         }
 
         public void LaunchInventoryItem(int i)
@@ -52,16 +56,25 @@ namespace DD.Core
             Entity entityToLaunch = inventoryHandler.GetInventory()[i];
             inventoryHandler.DeleteItem(i);
 
-            LaunchEntity(entityToLaunch);
+            LaunchEntity(entityToLaunch, 0);
         }
 
-        public void LaunchEntity(Entity entityToLaunch)
+        public void LaunchShopItem(int i)
         {
-            if(playData.CanUse(entityToLaunch.info.cost))
+            Entity entityToLaunch = shopHandler.GetShopItems()[i];
+            
+            if(LaunchEntity(entityToLaunch, shopHandler.GetCosts()[i])) shopHandler.IncreasePrice(i); 
+        }
+
+        public bool LaunchEntity(Entity entityToLaunch, int cost)
+        {
+            if(playData.CanUse(cost))
             {
-                playData.UseCoin(entityToLaunch.info.cost);
+                playData.UseCoin(cost);
                 Launch(entityToLaunch.gameObject);
+                return true;
             }
+            else return false;
         }
 
         void Launch(GameObject objToSpawn)

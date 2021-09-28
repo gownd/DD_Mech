@@ -4,14 +4,12 @@ using UnityEngine;
 using MoreMountains.Feedbacks;
 using System;
 using DD.FX;
+using DD.Stats;
 
 namespace DD.Combat
 {
     public class Health : MonoBehaviour
     {
-        [Header("Configs")]
-        [SerializeField] float maxHP = 100f;
-
         [Header("Feedbacks")]
         [SerializeField] MMFeedbacks hitFeedback = null;
         [SerializeField] MMFeedbacks healFeedback = null;
@@ -35,7 +33,7 @@ namespace DD.Combat
 
         private void Start()
         {
-            hp = maxHP;
+            hp = GetComponent<BaseStats>().GetStat(StatType.maxHP);
         }
 
         public void TakeDamage(float damage)
@@ -85,7 +83,7 @@ namespace DD.Combat
             {
                 healFeedback.PlayFeedbacks();
             }
-            hp = Mathf.Min(hp + healAmount, maxHP);
+            hp = Mathf.Min(hp + healAmount, GetComponent<BaseStats>().GetStat(StatType.maxHP));
         }
 
         public float GetCurrentHP()
@@ -95,7 +93,7 @@ namespace DD.Combat
 
         public float GetMaxHP()
         {
-            return maxHP;
+            return GetComponent<BaseStats>().GetStat(StatType.maxHP);
         }
 
         public bool IsAlive()

@@ -3,16 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using DD.Enemies;
 using DD.Combat;
+using DD.Stats;
 
 namespace DD.Hero
 {
     public class HeroController : MonoBehaviour
     {
+        [SerializeField] Vector2 pushForce;
+
+        BaseStats baseStats;
+
+        private void Awake()
+        {
+            baseStats = GetComponent<BaseStats>();
+        }
+
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject.tag == "Enemy")
             {
                 HandleFight(other.gameObject);
+            }
+            else if (other.gameObject.tag == "TreasureBox")
+            {
+                HandleOpenTreasure(other.gameObject);
             }
         }
 
@@ -28,13 +42,25 @@ namespace DD.Hero
         {
             GetComponent<Animator>().SetTrigger("Attack");
 
-            enemy.GetComponent<Health>().TakeDamage(5f);
-            enemy.GetComponent<Rigidbody2D>().AddForce(new Vector2(300f, 200f));
+            enemy.GetComponent<Health>().TakeDamage(baseStats.GetStat(StatType.Attack));
+            enemy.GetComponent<Rigidbody2D>().AddForce(pushForce);
         }
 
         void Hurt(GameObject enemy)
         {
-            GetComponent<Health>().TakeDamage(enemy.GetComponent<Enemy>().info.damage);
+            GetComponent<Health>().TakeDamage(enemy.GetComponent<BaseStats>().GetStat(StatType.Attack));
+        }
+
+        void HandleOpenTreasure(GameObject treasure)
+        {
+            TreasureBox treasureBox = treasure.GetComponent<TreasureBox>();
+
+            if (treasureBox.CanOpen())
+            {
+                GetComponent<Animator>().SetTrigger("Attack");
+
+                treasureBox.OpenTreasure(GetComponent<BaseStats>());
+            }
         }
     }
 
