@@ -71,6 +71,7 @@ namespace DD.Combat
                     child.gameObject.SetActive(false);
                 }
             }
+            GetComponent<BoxCollider2D>().enabled = false;
 
             Destroy(gameObject, 1f);
         }

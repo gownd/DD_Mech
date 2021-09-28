@@ -29,6 +29,10 @@ public class Catcher : MonoBehaviour
 
     IEnumerator CatchItemBox(ItemBox itemBox)
     {
+        if(itemBox.IsCatched()) yield break;
+
+        itemBox.Catch();
+
         FindObjectOfType<HapticPlayer>().PlayHaptic(HapticTypes.SoftImpact);
 
         itemBox.GetComponent<Animator>().SetBool("isCatched", true);

@@ -15,11 +15,21 @@ namespace DD.Shop
 
         public event Action onShopChanged;
 
-        private void Start() 
+        private void Awake() 
         {
-            itemlevels = new int[3]{0, 0, 0};    
+            Initialize();
+        }
+
+        private void Start()
+        {
+            
+        }
+
+        private void Initialize()
+        {
+            itemlevels = new int[3] { 0, 0, 0 };
             itemCosts = new int[3];
-            for(int i = 0; i < itemCosts.Length; i++)
+            for (int i = 0; i < itemCosts.Length; i++)
             {
                 itemCosts[i] = shopItems[i].GetCost();
             }

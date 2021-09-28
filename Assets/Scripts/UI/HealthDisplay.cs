@@ -20,6 +20,8 @@ namespace DD.UI
 
         void UpdateDisplay()
         {
+            if(target == null) return;
+
             hpBar.fillAmount = target.GetCurrentHP() / target.GetMaxHP();
             hpText.text = target.GetCurrentHP() + "/" + target.GetMaxHP();
         }

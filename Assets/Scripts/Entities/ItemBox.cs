@@ -8,7 +8,10 @@ namespace DD.Entities
     {
         [SerializeField] float moveSpeed = 50f;
         [SerializeField] GameObject[] itemsToGet = null;
+        
         Rigidbody2D rb;
+
+        bool isCatched = false;
 
         private void Awake()
         {
@@ -28,6 +31,16 @@ namespace DD.Entities
         public void SetSpeed(float speedToSet)
         {
             moveSpeed = speedToSet;
+        }
+
+        public bool IsCatched()
+        {
+            return isCatched;
+        }
+
+        public void Catch()
+        {
+            isCatched = true;
         }
     }
 

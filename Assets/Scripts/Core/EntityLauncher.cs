@@ -30,6 +30,7 @@ namespace DD.Core
         PlayData playData;
         InventoryHandler inventoryHandler;
         ShopHandler shopHandler;
+        PotionHandler potionHandler;
         
 
         private void Awake()
@@ -38,6 +39,7 @@ namespace DD.Core
             playData = FindObjectOfType<PlayData>();
             inventoryHandler = FindObjectOfType<InventoryHandler>();
             shopHandler = FindObjectOfType<ShopHandler>();
+            potionHandler = FindObjectOfType<PotionHandler>();
         }
 
         public void LaunchEnemy()
@@ -48,7 +50,7 @@ namespace DD.Core
 
         public void LaunchPotion()
         {
-            LaunchEntity(potion, 2);
+            LaunchEntity(potion, potionHandler.GetCost());
         }
 
         public void LaunchInventoryItem(int i)

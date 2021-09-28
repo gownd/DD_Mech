@@ -35,7 +35,7 @@ namespace DD.Hero
             if (!enemy.GetComponent<Health>().IsAlive()) return;
 
             Attack(enemy);
-            Hurt(enemy);
+            HurtBy(enemy);
         }
 
         void Attack(GameObject enemy)
@@ -46,7 +46,7 @@ namespace DD.Hero
             enemy.GetComponent<Rigidbody2D>().AddForce(pushForce);
         }
 
-        void Hurt(GameObject enemy)
+        void HurtBy(GameObject enemy)
         {
             GetComponent<Health>().TakeDamage(enemy.GetComponent<BaseStats>().GetStat(StatType.Attack));
         }
