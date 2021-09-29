@@ -61,11 +61,11 @@ namespace DD.UI
         {
             if (isUpPressed && posValue < 1f)
             {
-                rb.velocity = new Vector2(rb.velocity.x, moveSpeed * Time.deltaTime);
+                rb.velocity = new Vector2(rb.velocity.x, moveSpeed * Time.fixedDeltaTime);
             }
             else if (isDownPressed && posValue > 0f)
             {
-                rb.velocity = new Vector2(rb.velocity.x, -moveSpeed * Time.deltaTime);
+                rb.velocity = new Vector2(rb.velocity.x, -moveSpeed * Time.fixedDeltaTime);
             }
             else
             {

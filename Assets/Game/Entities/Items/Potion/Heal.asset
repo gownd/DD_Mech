@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d039135938d60a7449ca628090f69e65, type: 3}
   m_Name: Heal
   m_EditorClassIdentifier: 
-  distance: 2
+  effectRadius: 2
   healAmount: 30

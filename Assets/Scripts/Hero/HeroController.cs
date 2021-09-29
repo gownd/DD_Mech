@@ -12,10 +12,12 @@ namespace DD.Hero
         [SerializeField] Vector2 pushForce;
 
         BaseStats baseStats;
+        Fever fever;
 
         private void Awake()
         {
             baseStats = GetComponent<BaseStats>();
+            fever = GetComponent<Fever>();
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -42,7 +44,9 @@ namespace DD.Hero
         {
             GetComponent<Animator>().SetTrigger("Attack");
 
-            enemy.GetComponent<Health>().TakeDamage(baseStats.GetStat(StatType.Attack));
+            float damage = baseStats.GetStat(StatType.Attack);
+            if(fever.IsFever()) damage *= 2f;
+            enemy.GetComponent<Health>().TakeDamage(damage);
             enemy.GetComponent<Rigidbody2D>().AddForce(pushForce);
         }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DD.Combat;
 
 namespace DD.Platforms
 {
@@ -10,15 +11,22 @@ namespace DD.Platforms
         [SerializeField] Platform currentPlatform;
         [SerializeField] float generationXOffset = 30f;
 
+        [Header("Move Speed")]
+        [SerializeField] float normalMoveSpeed = 150f;
+        [SerializeField] float feverMoveSpeed = 250f;
+
         Platform pastPlatform;
 
         Transform heroTransform;
         Vector2 generationPoint;
         Vector2 destroyPoint;
 
+        Fever fever;
+
         private void Awake()
         {
             heroTransform = GameObject.FindWithTag("Hero").transform;
+            fever = heroTransform.GetComponent<Fever>();
         }
 
         void Update()
@@ -26,6 +34,7 @@ namespace DD.Platforms
             UpdatePoints();
             GenerateNewPlatform();
             DestroyPastPlatform();
+            UpdateMoveSpeed(fever.IsFever());
         }
 
         private void DestroyPastPlatform()
@@ -49,10 +58,22 @@ namespace DD.Platforms
 
         private void UpdatePoints()
         {
-            if (heroTransform == null) return;
+            if(heroTransform == null) return;
 
             generationPoint = new Vector2(heroTransform.transform.position.x + generationXOffset, 0f);
             destroyPoint = new Vector2(heroTransform.transform.position.x - generationXOffset, 0f);
+        }
+
+        public void UpdateMoveSpeed(bool? isFever)
+        {
+            float moveSpeed;
+
+            if(fever == null) moveSpeed = 0f;
+            else if((bool)isFever) moveSpeed = feverMoveSpeed;
+            else moveSpeed = normalMoveSpeed;
+
+            if(pastPlatform != null) pastPlatform.GetComponent<PlatformMover>().SetSpeedFever(moveSpeed);
+            currentPlatform.GetComponent<PlatformMover>().SetSpeedFever(moveSpeed);
         }
     }
 

@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8921293351491763125}
   - component: {fileID: 8921293351491763122}
   - component: {fileID: 422806177}
-  - component: {fileID: 4860362271205997287}
+  - component: {fileID: 3088846643034075099}
   m_Layer: 9
   m_Name: Default Platform
   m_TagString: Untagged
@@ -7272,7 +7272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endPos: {fileID: 1326235238}
---- !u!114 &4860362271205997287
+--- !u!114 &3088846643034075099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7284,3 +7284,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019b93df9e32f0e4e90e1019e008b088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalMoveSpeed: 150
+  feverMoveSpeed: 300

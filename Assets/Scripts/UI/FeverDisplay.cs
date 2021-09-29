@@ -1,5 +1,5 @@
 using UnityEngine;
-using DD.Hero;
+using DD.Combat;
 using UnityEngine.UI.ProceduralImage;
 using TMPro;
 
