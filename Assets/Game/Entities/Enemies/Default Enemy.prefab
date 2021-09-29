@@ -405,7 +405,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1545909203
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 6677806975911841103, guid: 1df5df4591529414c81a4aad9bdafd0c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -540,6 +540,7 @@ MonoBehaviour:
   hitFeedback: {fileID: 5264109824053038004}
   healFeedback: {fileID: 6843154649027604322}
   damageTextPrefab: {fileID: 6117349911216068515, guid: d25926cc84fb46e488655d5a8fde740b, type: 3}
+  criticalDamageTextPrefab: {fileID: 7557444878629929904, guid: 94383b3371a46e3428a6994dbdd35c5e, type: 3}
   floatPos: {fileID: 4439673440949301906}
 --- !u!114 &5642163180266826182
 MonoBehaviour:
@@ -556,7 +557,6 @@ MonoBehaviour:
   info: {fileID: 0}
   isSpinning: 0
   spinSpeed: 100
-  cost: 0
 --- !u!114 &-5917143513755932509
 MonoBehaviour:
   m_ObjectHideFlags: 0

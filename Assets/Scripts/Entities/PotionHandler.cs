@@ -4,7 +4,7 @@ namespace DD.Entities
 {
     public class PotionHandler : MonoBehaviour
     {
-        int cost = 2;
+        [SerializeField] int cost = 2;
 
         public int GetCost()
         {

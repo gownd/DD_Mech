@@ -3,6 +3,6 @@ namespace DD.Stats
 {
     public enum StatType
     {
-        Attack, maxHP
+        Attack, maxHP, Critical
     }
 }

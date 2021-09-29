@@ -5,6 +5,7 @@ using MoreMountains.Feedbacks;
 using System;
 using DD.FX;
 using DD.Stats;
+using UnityEngine.SceneManagement;
 
 namespace DD.Combat
 {
@@ -16,6 +17,7 @@ namespace DD.Combat
 
         [Header("Damage Text")]
         [SerializeField] DamageText damageTextPrefab = null;
+        [SerializeField] DamageText criticalDamageTextPrefab = null;
         [SerializeField] Transform floatPos = null;
 
         public event Action onTakeDamage;
@@ -36,14 +38,18 @@ namespace DD.Combat
             hp = GetComponent<BaseStats>().GetStat(StatType.maxHP);
         }
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(float damage, bool isCritical)
         {
             if (!isAlive) return;
 
             hitFeedback.PlayFeedbacks();
-            hp = Mathf.Max(hp - damage, 0f);
 
-            ShowDamageText(damage);
+            float damageToTake = damage;
+            if(isCritical) damageToTake = damageToTake * 2f;
+
+            hp = Mathf.Max(hp - damageToTake, 0f);
+
+            ShowDamageText(damageToTake, isCritical);
             onTakeDamage(); // Action
 
             if (hp <= 0)
@@ -52,9 +58,13 @@ namespace DD.Combat
             }
         }
 
-        void ShowDamageText(float damage)
+        void ShowDamageText(float damage, bool isCritical)
         {
-            DamageText damageText = Instantiate(damageTextPrefab, floatPos);
+            DamageText prefabToInstatiate;
+            if(isCritical) prefabToInstatiate = criticalDamageTextPrefab;
+            else prefabToInstatiate = damageTextPrefab;
+
+            DamageText damageText = Instantiate(prefabToInstatiate, floatPos);
             damageText.SetText(damage);
         }
 
@@ -73,7 +83,18 @@ namespace DD.Combat
             }
             GetComponent<BoxCollider2D>().enabled = false;
 
-            Destroy(gameObject, 1f);
+            if(gameObject.tag == "Hero") 
+            {
+                StartCoroutine(LoadScene());
+            }
+            Destroy(gameObject, 1.1f);
+        }
+
+        IEnumerator LoadScene()
+        {
+            yield return new WaitForSeconds(1f);
+
+            SceneManager.LoadScene(0);
         }
 
         public void Heal(float healAmount)
@@ -85,6 +106,7 @@ namespace DD.Combat
                 healFeedback.PlayFeedbacks();
             }
             hp = Mathf.Min(hp + healAmount, GetComponent<BaseStats>().GetStat(StatType.maxHP));
+            onTakeDamage();
         }
 
         public float GetCurrentHP()

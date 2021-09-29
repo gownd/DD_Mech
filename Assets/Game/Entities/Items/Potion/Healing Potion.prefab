@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -894022387
       objectReference: {fileID: 0}
+    - target: {fileID: 122783443145735202, guid: ad669db2baaa42240b2aaa8d72317011, type: 3}
+      propertyPath: effectRadius
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5877409410669988342, guid: ad669db2baaa42240b2aaa8d72317011, type: 3}
       propertyPath: info
       value: 

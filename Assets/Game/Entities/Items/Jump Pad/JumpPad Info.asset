@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d039135938d60a7449ca628090f69e65, type: 3}
-  m_Name: Heal
+  m_Script: {fileID: 11500000, guid: 7b5d3cd2101c37342b3833adf5599644, type: 3}
+  m_Name: JumpPad Info
   m_EditorClassIdentifier: 
-  effectRadius: 1.5
-  healAmount: 40
+  type: 1
+  objName: "\uC810\uD504\uD328\uB4DC"
+  repSprite: {fileID: -731693775126601159, guid: 79b81cfbe6c0bdc43a85bf317f67cdbd, type: 3}

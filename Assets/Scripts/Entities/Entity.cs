@@ -8,12 +8,6 @@ namespace DD.Entities
 
         [SerializeField] bool isSpinning = false;
         [SerializeField] float spinSpeed = 100f;
-        [SerializeField] int cost = 0;
-
-        private void Start() 
-        {
-            // cost = defaultCost;    
-        }
 
         private void Update()
         {
@@ -26,16 +20,6 @@ namespace DD.Entities
             {
                 transform.eulerAngles += new Vector3(0, 0, spinSpeed * Time.deltaTime);
             }
-        }
-
-        public int GetCost()
-        {
-            return cost;
-        }
-
-        public void SetCost(int costToSet)
-        {
-            cost = costToSet;
         }
     }
 }

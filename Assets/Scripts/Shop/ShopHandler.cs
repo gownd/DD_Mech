@@ -31,7 +31,7 @@ namespace DD.Shop
             itemCosts = new int[3];
             for (int i = 0; i < itemCosts.Length; i++)
             {
-                itemCosts[i] = shopItems[i].GetCost();
+                itemCosts[i] = priceProgression.progression[0];
             }
         }
 
@@ -47,7 +47,7 @@ namespace DD.Shop
 
         public void IncreasePrice(int i)
         {
-            itemlevels[i] += 1;
+            if(itemlevels[i] < priceProgression.progression.Length - 1) itemlevels[i] += 1;
             itemCosts[i] = priceProgression.progression[itemlevels[i]];
             onShopChanged();
         }

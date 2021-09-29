@@ -20,6 +20,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 7e4d3d28770f9764da71603c0be2fd95, type: 3}
     - target: {fileID: 5399385398734577764, guid: e3e47bb9639aa704387a61703208fc38, type: 3}
+      propertyPath: addAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399385398734577764, guid: e3e47bb9639aa704387a61703208fc38, type: 3}
+      propertyPath: statTypeToAdd
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399385398734577764, guid: e3e47bb9639aa704387a61703208fc38, type: 3}
       propertyPath: treasureSprite
       value: 
       objectReference: {fileID: 21300000, guid: 7e4d3d28770f9764da71603c0be2fd95, type: 3}

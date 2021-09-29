@@ -11,6 +11,8 @@ namespace DD.Hero
     {
         [SerializeField] Vector2 pushForce;
 
+        Rigidbody2D rb;
+
         BaseStats baseStats;
         Fever fever;
 
@@ -18,6 +20,18 @@ namespace DD.Hero
         {
             baseStats = GetComponent<BaseStats>();
             fever = GetComponent<Fever>();
+            rb = GetComponent<Rigidbody2D>();
+        }
+
+        private void Update() 
+        {
+            transform.position = new Vector2(-2.7f, transform.position.y);
+        }
+
+        private void FixedUpdate() 
+        {
+            rb.velocity = new Vector2(0f, rb.velocity.y);
+            print(rb.velocity);
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -45,14 +59,25 @@ namespace DD.Hero
             GetComponent<Animator>().SetTrigger("Attack");
 
             float damage = baseStats.GetStat(StatType.Attack);
-            if(fever.IsFever()) damage *= 2f;
-            enemy.GetComponent<Health>().TakeDamage(damage);
-            enemy.GetComponent<Rigidbody2D>().AddForce(pushForce);
+            float criticalRatio = baseStats.GetStat(StatType.Critical) / 100f;
+            bool isCritical = Random.Range(0f, 1f) <= criticalRatio;
+
+            Vector2 forceToPush = pushForce;
+
+            if(isCritical) 
+            {
+                forceToPush *= 1.2f;
+                enemy.GetComponent<Health>().TakeDamage(damage, true);
+            }
+            else enemy.GetComponent<Health>().TakeDamage(damage, false);
+            
+            enemy.GetComponent<Rigidbody2D>().AddForce(forceToPush);
         }
 
         void HurtBy(GameObject enemy)
         {
-            GetComponent<Health>().TakeDamage(enemy.GetComponent<BaseStats>().GetStat(StatType.Attack));
+            if(fever.IsFever()) return;
+            GetComponent<Health>().TakeDamage(enemy.GetComponent<BaseStats>().GetStat(StatType.Attack), false);
         }
 
         void HandleOpenTreasure(GameObject treasure)

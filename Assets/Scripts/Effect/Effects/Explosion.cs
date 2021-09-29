@@ -22,7 +22,7 @@ namespace DD.Effects
                     float distance = Vector2.Distance(bomb.transform.position, healths[i].transform.position);
                     if (distance <= effectRadius)
                     {
-                        healths[i].TakeDamage(damage);
+                        healths[i].TakeDamage(damage, false);
                     }
                 }
             }

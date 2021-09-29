@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - ItemBox
   - TreasureBox
+  - Platform
+  - Pickup
   layers:
   - Default
   - TransparentFX
@@ -23,8 +25,8 @@ TagManager:
   - Catchable
   - Catcher
   - Treasure
-  - 
-  - 
+  - ToHero
+  - ToEnemy
   - 
   - 
   - 
@@ -47,6 +49,9 @@ TagManager:
     locked: 0
   - name: Catchable
     uniqueID: 3821780809
+    locked: 0
+  - name: Behind Character
+    uniqueID: 1120316653
     locked: 0
   - name: Enemy
     uniqueID: 1545909203

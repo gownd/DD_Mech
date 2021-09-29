@@ -5,7 +5,7 @@ namespace DD.Combat
 {
     public class Fever : MonoBehaviour
     {
-        [SerializeField] float timeToFever = 30f;
+        [SerializeField] float timeToFever = 120f;
         [SerializeField] SpriteRenderer feverSprite = null;
         [SerializeField] MMFeedbacks feverFeedback = null;
 
@@ -17,10 +17,15 @@ namespace DD.Combat
 
         private void Update()
         {
+            HandleFever();
+        }
+
+        private void HandleFever()
+        {
             if (isFever)
             {
-                currentFever = Mathf.Max(currentFever - Time.deltaTime, 0f);
-                if(currentFever <= 0f)
+                currentFever = Mathf.Max(currentFever - Time.deltaTime * (timeToFever / 5f), 0f);
+                if (currentFever <= 0f)
                 {
                     EndFever();
                 }
@@ -49,6 +54,7 @@ namespace DD.Combat
         {
             isFever = true;
             feverSprite.color = new Color(feverSprite.color.r, feverSprite.color.g, feverSprite.color.b, 0.5f);
+            print(feverSprite.color.a);
             feverFeedback.PlayFeedbacks();
         }
 
@@ -62,6 +68,11 @@ namespace DD.Combat
         public bool IsFever()
         {
             return isFever;
+        }
+
+        public void AddFever()
+        {
+            currentFever += timeToFever / 3f;
         }
     }
 }
