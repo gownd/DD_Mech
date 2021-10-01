@@ -93,8 +93,8 @@ GameObject:
   - component: {fileID: 9174740073753760107}
   - component: {fileID: 908265535}
   - component: {fileID: 908265536}
-  - component: {fileID: 7859636001371237143}
   - component: {fileID: 1808694488146291788}
+  - component: {fileID: 7859636001371237143}
   m_Layer: 11
   m_Name: Item Box
   m_TagString: ItemBox
@@ -164,21 +164,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7859636001371237143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9174740073753760021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf3c5cdfc78425f4395f58ffcb4b99a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 100
-  itemsToGet:
-  - {fileID: 1918394468723219213, guid: a0ae00060abd58c4a99dff8ba584de58, type: 3}
 --- !u!95 &1808694488146291788
 Animator:
   serializedVersion: 3
@@ -198,3 +183,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7859636001371237143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174740073753760021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3c5cdfc78425f4395f58ffcb4b99a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 100
+  itemsToGet:
+  - {fileID: 7153527711550187494, guid: edc1237955b4d7043b6744b5554c6c27, type: 3}
+  - {fileID: 5306030316788989010, guid: 857f6d4a1e05b5144ba9ed3846f2d776, type: 3}
+  - {fileID: 5306030316788989010, guid: 857f6d4a1e05b5144ba9ed3846f2d776, type: 3}
+  - {fileID: 3223484296328141664, guid: ab914bc4d9806f440bbcf33bc839d0f6, type: 3}
+  - {fileID: 3223484296328141664, guid: ab914bc4d9806f440bbcf33bc839d0f6, type: 3}

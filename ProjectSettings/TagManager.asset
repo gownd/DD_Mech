@@ -24,10 +24,10 @@ TagManager:
   - Item
   - Catchable
   - Catcher
-  - Treasure
+  - ToPlatform
   - ToHero
   - ToEnemy
-  - 
+  - ToCharacter
   - 
   - 
   - 

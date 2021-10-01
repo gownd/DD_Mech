@@ -10,6 +10,7 @@ namespace DD.Hero
     public class HeroController : MonoBehaviour
     {
         [SerializeField] Vector2 pushForce;
+        [SerializeField] float criticalPushModifier = 1.5f;
 
         Rigidbody2D rb;
 
@@ -31,7 +32,6 @@ namespace DD.Hero
         private void FixedUpdate() 
         {
             rb.velocity = new Vector2(0f, rb.velocity.y);
-            print(rb.velocity);
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -66,7 +66,7 @@ namespace DD.Hero
 
             if(isCritical) 
             {
-                forceToPush *= 1.2f;
+                forceToPush *= criticalPushModifier;
                 enemy.GetComponent<Health>().TakeDamage(damage, true);
             }
             else enemy.GetComponent<Health>().TakeDamage(damage, false);

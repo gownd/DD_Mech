@@ -79,6 +79,7 @@ namespace DD.UI
 
         private void OnMouseDown()
         {
+            FindObjectOfType<HapticPlayer>().PlayHaptic(HapticTypes.Selection);
             isMoving = true;
         }
 

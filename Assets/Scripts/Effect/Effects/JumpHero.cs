@@ -18,7 +18,7 @@ namespace DD.Effects
             Rigidbody2D heroRigidbody = target.GetComponent<Rigidbody2D>();
             heroRigidbody.velocity = new Vector2(0f, jumpForce);
 
-            pad.GetComponent<Animator>().SetTrigger("Jump");
+            pad.transform.parent.GetComponent<Animator>().SetTrigger("Jump");
 
             Destroy(pad, 1f);
         }

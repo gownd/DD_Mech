@@ -12,15 +12,9 @@ namespace DD.Effects
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            print("A");
-
             if(other.gameObject.tag == "Platform" && canOnPlatform) return; 
 
-            print("A");
-
             if (collisionEffect == null || hasActivated) return;
-
-            print("A");
 
             hasActivated = true;
             collisionEffect.Activate(other.gameObject, gameObject);
