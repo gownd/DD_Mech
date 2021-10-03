@@ -54,7 +54,6 @@ namespace DD.Combat
         {
             isFever = true;
             feverSprite.color = new Color(feverSprite.color.r, feverSprite.color.g, feverSprite.color.b, 0.5f);
-            print(feverSprite.color.a);
             feverFeedback.PlayFeedbacks();
         }
 

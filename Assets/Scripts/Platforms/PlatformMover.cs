@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class PlatformMover : MonoBehaviour 
+public class PlatformMover : MonoBehaviour
 {
     float currentMoveSpeed = 150f;
 
     Rigidbody2D rb;
 
-    private void Awake() 
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-    } 
+    }
 
     private void FixedUpdate()
     {

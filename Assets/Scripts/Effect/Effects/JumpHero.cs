@@ -13,8 +13,6 @@ namespace DD.Effects
         {
             if(target.tag != "Hero") return;
 
-            Debug.Log("JUMP");
-
             Rigidbody2D heroRigidbody = target.GetComponent<Rigidbody2D>();
             heroRigidbody.velocity = new Vector2(0f, jumpForce);
 

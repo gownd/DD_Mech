@@ -7,6 +7,7 @@ namespace DD.Data
     public class PlayData : MonoBehaviour
     {
         int coin = 0;
+        bool hasStartedBossFight = false;
 
         public int GetCurrentCoin()
         {
@@ -27,7 +28,15 @@ namespace DD.Data
         {
             return coin >= use;
         }
+
+        public bool HasStartedBossFight()
+        {
+            return hasStartedBossFight;
+        }
+
+        public void StartBossFight()
+        {
+            hasStartedBossFight = true;
+        }
     }
-
-
 }

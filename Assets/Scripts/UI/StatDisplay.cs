@@ -9,17 +9,17 @@ namespace DD.UI
     public class StatDisplay : MonoBehaviour
     {
         TextMeshProUGUI textDisplay = null;
-        BaseStats baseStats;
+        BaseStats heroBaseStats;
 
         private void Awake() 
         {
             textDisplay = GetComponent<TextMeshProUGUI>();
-            baseStats = FindObjectOfType<BaseStats>();    
+            heroBaseStats = GameObject.FindGameObjectWithTag("Hero").GetComponent<BaseStats>();    
         }
 
         private void Update() 
         {
-            textDisplay.text = "ATK " +  baseStats.GetStat(StatType.Attack) + "  |  " + "CRI " + baseStats.GetStat(StatType.Critical) + " %"; 
+            textDisplay.text = "ATK " +  heroBaseStats.GetStat(StatType.Attack) + "  |  " + "CRI " + heroBaseStats.GetStat(StatType.Critical) + " %"; 
         }
     }
 }

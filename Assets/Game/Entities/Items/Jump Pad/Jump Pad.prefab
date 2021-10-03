@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7025588587300159334, guid: 5f5d6b4d021aec14b954b275f36f0db7, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5556183
+      objectReference: {fileID: 0}
+    - target: {fileID: 7025588587300159334, guid: 5f5d6b4d021aec14b954b275f36f0db7, type: 3}
+      propertyPath: m_Size.y
+      value: 0.7757165
+      objectReference: {fileID: 0}
+    - target: {fileID: 7025588587300159334, guid: 5f5d6b4d021aec14b954b275f36f0db7, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0024642944
+      objectReference: {fileID: 0}
+    - target: {fileID: 7025588587300159334, guid: 5f5d6b4d021aec14b954b275f36f0db7, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.047485262
+      objectReference: {fileID: 0}
     - target: {fileID: 7095496137290482784, guid: 5f5d6b4d021aec14b954b275f36f0db7, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7095496137290482790, guid: 5f5d6b4d021aec14b954b275f36f0db7, type: 3}
       propertyPath: m_Name
-      value: Default Trap
+      value: Jump Pad
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f5d6b4d021aec14b954b275f36f0db7, type: 3}
