@@ -6,6 +6,7 @@ using System;
 using DD.FX;
 using DD.Stats;
 using UnityEngine.SceneManagement;
+using DD.Data;
 
 namespace DD.Combat
 {
@@ -98,6 +99,11 @@ namespace DD.Combat
             {
                 StartCoroutine(LoadScene());
             }
+            if(GetComponent<Boss>())
+            {
+                FindObjectOfType<PlayData>().EndBossFight();
+            }
+
             Destroy(gameObject, 1.1f);
         }
 

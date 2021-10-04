@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator HandleArrvie(GameObject checker)
     {
+        playData.ArrvivedAtBoss();
         platformManager.StopMove();
 
         yield return new WaitForSeconds(0.5f);

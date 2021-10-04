@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca12e6773f9dd5540aaa7d0f9f22b24a, type: 3}
   m_Name: Proto Stage
   m_EditorClassIdentifier: 
-  stageStructure: 02000000
+  stageStructure: 0000000000000000000000000000000001000000000000000000000001000000000000000000000002000000
   defaultPlatform: {fileID: 422806177, guid: eea5dd61b5044cc46b5a59b1a35918ee, type: 3}
   trapPlatforms:
   - {fileID: 422806177, guid: 67a9d6ada3064044faca1f5b8976d75d, type: 3}
   - {fileID: 422806177, guid: 96d61d8a0714e9c49830761a518e7ab3, type: 3}
-  - {fileID: 422806177, guid: 7895ca749c33eb045b232b119d1b92dd, type: 3}
   bossPlatform: {fileID: 422806177, guid: 6d8e62c487dfea14da8f8c5a9eddcd3c, type: 3}

@@ -6746,8 +6746,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultPlatform: {fileID: 422806177, guid: eea5dd61b5044cc46b5a59b1a35918ee, type: 3}
-  normalMoveSpeed: 150
-  feverMoveSpeed: 300
+  normalMoveSpeed: 160
+  feverMoveSpeed: 320
 --- !u!114 &1313440847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20676,7 +20676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8373163193143314062, guid: 69b6fc0a8266a564c86f2c9c2f410475, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8373163193520781689, guid: 69b6fc0a8266a564c86f2c9c2f410475, type: 3}
       propertyPath: m_SizeDelta.x
@@ -20688,7 +20688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8373163194332252188, guid: 69b6fc0a8266a564c86f2c9c2f410475, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69b6fc0a8266a564c86f2c9c2f410475, type: 3}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DD.Entities;
+using DD.Data;
 
 namespace DD.Core
 {
@@ -14,6 +15,13 @@ namespace DD.Core
         [SerializeField] float timeToSpawn;
         float timePassed;
 
+        PlayData playData;
+
+        private void Awake() 
+        {
+            playData = FindObjectOfType<PlayData>();    
+        }
+
         private void Update()
         {
             SpawnPickUpIntervally();
@@ -21,6 +29,8 @@ namespace DD.Core
 
         private void SpawnPickUpIntervally()
         {
+            if(playData.IsFightingBoss()) return;
+
             timePassed += Time.deltaTime;
             if (timePassed >= timeToSpawn)
             {

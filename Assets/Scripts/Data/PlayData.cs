@@ -8,6 +8,7 @@ namespace DD.Data
     {
         int coin = 0;
         bool hasStartedBossFight = false;
+        bool isFightingBoss = false;
 
         public int GetCurrentCoin()
         {
@@ -37,6 +38,21 @@ namespace DD.Data
         public void StartBossFight()
         {
             hasStartedBossFight = true;
+        }
+
+        public void ArrvivedAtBoss()
+        {
+            isFightingBoss = true;
+        }
+
+        public void EndBossFight()
+        {
+            isFightingBoss = false;
+        }
+
+        public bool IsFightingBoss()
+        {
+            return isFightingBoss;
         }
     }
 }
