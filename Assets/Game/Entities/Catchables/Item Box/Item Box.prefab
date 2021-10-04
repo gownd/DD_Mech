@@ -197,8 +197,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 100
   itemsToGet:
-  - {fileID: 7153527711550187494, guid: edc1237955b4d7043b6744b5554c6c27, type: 3}
-  - {fileID: 5306030316788989010, guid: 857f6d4a1e05b5144ba9ed3846f2d776, type: 3}
-  - {fileID: 5306030316788989010, guid: 857f6d4a1e05b5144ba9ed3846f2d776, type: 3}
   - {fileID: 3223484296328141664, guid: ab914bc4d9806f440bbcf33bc839d0f6, type: 3}
-  - {fileID: 3223484296328141664, guid: ab914bc4d9806f440bbcf33bc839d0f6, type: 3}
+  - {fileID: 5306030316788989010, guid: 857f6d4a1e05b5144ba9ed3846f2d776, type: 3}

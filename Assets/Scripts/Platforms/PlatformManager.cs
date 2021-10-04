@@ -9,17 +9,10 @@ namespace DD.Platforms
     public class PlatformManager : MonoBehaviour
     {
         [SerializeField] Platform defaultPlatform = null;
-        [SerializeField] Platform bossPlatform = null;
-
 
         [Header("Move Speed")]
         [SerializeField] float normalMoveSpeed = 150f;
         [SerializeField] float feverMoveSpeed = 250f;
-
-        [Header("Generate")]
-        [SerializeField] List<Platform> platforms;
-        [SerializeField] int platformCount = 10;
-        [SerializeField] Platform initialPlatform;
 
         Platform endPlatform;
         Platform pastPlatform;
@@ -29,6 +22,7 @@ namespace DD.Platforms
         Vector2 generationPoint;
         Vector2 destroyPoint;
 
+        StageGenerator stageGenerator;
         Fever fever;
         bool isMoving = true;
 
@@ -39,8 +33,10 @@ namespace DD.Platforms
             heroTransform = GameObject.FindWithTag("Hero").transform;
             fever = heroTransform.GetComponent<Fever>();
             playData = FindObjectOfType<PlayData>();
+            stageGenerator = GetComponent<StageGenerator>();
 
-            GenerateStage();
+            stageGenerator.GenerateStage();
+            endPlatform = stageGenerator.GetEndPlatform();
         }
 
         private void Start()
@@ -54,29 +50,6 @@ namespace DD.Platforms
             UpdateMoveSpeed(fever.IsFever(), isMoving);
         }
 
-        void GenerateStage()
-        {
-            platforms = new List<Platform>();
-            platforms.Add(initialPlatform);
-
-            endPlatform = initialPlatform;
-            
-            for (int i = 0; i < platformCount; i++)
-            {
-                Platform platformToGenerate;
-
-                if (i == platformCount - 1)
-                {
-                    platformToGenerate = bossPlatform;
-                }
-                else platformToGenerate = defaultPlatform;
-
-                Platform newPlatform = Instantiate(platformToGenerate, endPlatform.GetEndPos().position, Quaternion.identity, transform);
-                platforms.Add(newPlatform);
-                endPlatform = newPlatform;
-            }
-        }
-
         public void UpdateMoveSpeed(bool isFever, bool isMoving)
         {
             float moveSpeed;
@@ -87,7 +60,7 @@ namespace DD.Platforms
 
             if (!playData.HasStartedBossFight())
             {
-                foreach (Platform platform in platforms)
+                foreach (Platform platform in stageGenerator.GetPlatforms())
                 {
                     platform.GetComponent<PlatformMover>().SetSpeedFever(moveSpeed);
                 }
@@ -149,9 +122,9 @@ namespace DD.Platforms
 
         void DeactivateStagePlatforms()
         {
-            for (int i = 0; i < platforms.Count - 1; i++)
+            for (int i = 0; i < stageGenerator.GetPlatforms().Count - 1; i++)
             {
-                platforms[i].gameObject.SetActive(false);
+                stageGenerator.GetPlatforms()[i].gameObject.SetActive(false);
             }
         }
     }

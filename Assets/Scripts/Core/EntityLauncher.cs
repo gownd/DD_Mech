@@ -24,6 +24,7 @@ namespace DD.Core
         [Header("Default Entity")]
         [SerializeField] Entity skeleton = null;
         [SerializeField] Entity potion = null;
+        [SerializeField] Entity jumpPad = null;
         
 
         LauncherController launcherController;
@@ -45,6 +46,11 @@ namespace DD.Core
         public void LaunchEnemy()
         {
             LaunchEntity(skeleton, 0);
+        }
+
+        public void LaunchJumpPad()
+        {
+            LaunchEntity(jumpPad, 0);
         }
 
 

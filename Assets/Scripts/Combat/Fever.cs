@@ -69,9 +69,9 @@ namespace DD.Combat
             return isFever;
         }
 
-        public void AddFever()
+        public void AddFever(float amount)
         {
-            currentFever += timeToFever / 3f;
+            currentFever += Mathf.Min(timeToFever * amount, timeToFever);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace DD.Effects
             if (other.gameObject.tag == "Player" && !toHero) return;
             if (other.gameObject.tag == "Enemy" && !toEnemy) return;
 
-            hasActivated = true;
+            // hasActivated = true;
             collisionEffect.Activate(other.gameObject, gameObject);
         }
     }

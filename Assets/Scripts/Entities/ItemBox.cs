@@ -18,6 +18,11 @@ namespace DD.Entities
             rb = GetComponent<Rigidbody2D>();
         }
 
+        private void Update()
+        {
+            DestroyAfterPastAway();
+        }
+
         private void FixedUpdate()
         {
             rb.velocity = new Vector2(moveSpeed * Time.deltaTime, rb.velocity.y);
@@ -41,6 +46,14 @@ namespace DD.Entities
         public void Catch()
         {
             isCatched = true;
+        }
+
+        private void DestroyAfterPastAway()
+        {
+            if (Mathf.Abs(GameObject.FindWithTag("Hero").transform.position.x - transform.position.x) > 15f)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
