@@ -20610,6 +20610,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5493437086048097234, guid: 69b6fc0a8266a564c86f2c9c2f410475, type: 3}
+      propertyPath: onUpdate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493437086048097234, guid: 69b6fc0a8266a564c86f2c9c2f410475, type: 3}
+      propertyPath: matteColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493437086048097234, guid: 69b6fc0a8266a564c86f2c9c2f410475, type: 3}
+      propertyPath: matteColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493437086048097234, guid: 69b6fc0a8266a564c86f2c9c2f410475, type: 3}
+      propertyPath: matteColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5493437087134477475, guid: 69b6fc0a8266a564c86f2c9c2f410475, type: 3}
       propertyPath: jumpPad
       value: 

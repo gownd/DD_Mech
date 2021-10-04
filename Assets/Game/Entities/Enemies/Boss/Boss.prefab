@@ -307,11 +307,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9046824079870576712, guid: a5997d0ab73cb0b43a328bd7dfe79276, type: 3}
       propertyPath: stats.Array.data[0].value
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9046824079870576712, guid: a5997d0ab73cb0b43a328bd7dfe79276, type: 3}
       propertyPath: stats.Array.data[1].value
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5997d0ab73cb0b43a328bd7dfe79276, type: 3}
