@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adba3a8bc68494a4a8e0186c7ad8e067, type: 3}
+  m_Name: Boss Intro
+  m_EditorClassIdentifier: 
+  speeches:
+  - isHero: 0
+    message: "\uD6C4\uD6C4\uD6C4..."
+    timeToShow: 2
+  - isHero: 0
+    message: "\uACB0\uAD6D \uC5EC\uAE30\uAE4C\uC9C0 \uC654\uAD6C\uB098 \uC6A9\uC0AC\uC5EC..."
+    timeToShow: 3
+  - isHero: 0
+    message: "\uB108\uB97C \uC4F0\uB7EC\uB728\uB9AC\uAE30 \uC704\uD558\uC5EC\n\uD2B9\uBCC4\uD55C
+      \uC218\uB828\uC744 \uD574\uC654\uC9C0."
+    timeToShow: 3
+  - isHero: 0
+    message: "\uD558\uC9C0\uB9CC \uC2DC\uAC04\uC774 \uBD80\uC871\uD574\n\uC644\uC131\uD558\uC9C0
+      \uBABB\uD588\uB2E4."
+    timeToShow: 3
+  - isHero: 0
+    message: "\uC9C0\uAE08\uC758 \uB098\uB294 \uADF8\uC800\n\uD798\uC138\uACE0 \uD2BC\uD2BC\uD560
+      \uBFD0\uC774\uB2E4."
+    timeToShow: 3
+  - isHero: 0
+    message: "\uB2E4\uC74C\uC5D0 \uB9CC\uB098\uBA74\n\uB610 \uB2E4\uB97C \uAC83\uC774\uC57C."
+    timeToShow: 3
+  - isHero: 0
+    message: "\uC790, \uB364\uBCBC\uB77C!"
+    timeToShow: 2

@@ -32,7 +32,7 @@ namespace DD.Combat
             }
             else
             {
-                currentFever += Time.deltaTime;
+                // currentFever += Time.deltaTime;
                 if (currentFever >= timeToFever)
                 {
                     StartFever();

@@ -26,6 +26,7 @@ namespace DD.Combat
         bool isAlive = true;
 
         float hp;
+        float currentMaxHP;
 
         private void Awake()
         {
@@ -36,6 +37,16 @@ namespace DD.Combat
         private void Start()
         {
             hp = GetComponent<BaseStats>().GetStat(StatType.maxHP);
+        }
+
+        private void Update() 
+        {
+            float newMaxHP = GetComponent<BaseStats>().GetStat(StatType.maxHP);
+            if(currentMaxHP < newMaxHP)    
+            {
+                hp = Mathf.Min(hp + ( newMaxHP - currentMaxHP ), newMaxHP);
+                currentMaxHP = newMaxHP;
+            }
         }
 
         public void TakeDamage(float damage, bool isCritical)

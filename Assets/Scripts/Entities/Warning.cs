@@ -21,7 +21,7 @@ namespace DD.Entities
         {
             if(hasWarned) return;
 
-            if(GetDistanceToHero() <= 19f)
+            if(GetDistanceToHero() <= 39f)
             {
                 onClosed.Occurred(gameObject);
                 hasWarned = true;

@@ -1,4 +1,6 @@
 using UnityEngine;
+using DD.FX;
+using MoreMountains.NiceVibrations;
 
 public class BasicButtonChanger : MonoBehaviour 
 {
@@ -9,6 +11,8 @@ public class BasicButtonChanger : MonoBehaviour
 
     public void ToggleButtons()
     {
+        FindObjectOfType<HapticPlayer>().PlayHaptic(HapticTypes.Selection);
+
         isOn = !isOn;
 
         potionButton.SetActive(isOn);
